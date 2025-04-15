@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+<composite:interface>
+</composite:interface>
+<composite:implementation>
+	<nav id="nav-bar-retraida"
+		class="bg-gray-800 h-full flex  flex-col items-center justify-between h-full px-2">
+		<h:form class="h-full flex-col flex justify-between">
+			<div>
+				<div class="flex flex-col justify-between items-center">
+					<div id="botao-nav-bar-retraida"
+						class="my-3 text-gray-300 flex   cursor-pointer hover:bg-gray-700 hover:text-white p-2 rounded-md text-sm font-medium">
+						<i class="pi pi-align-justify" style="font-size: 2rem"></i>
+					</div>
+					<div class="elementsWrapper">
+
+
+						<h:commandLink class="cursor-pointer mb-3" aria-current="page"
+							actionListener="#{templateController.redirect('/root/psicologo/agenda-psicologo.xhtml')}">
+							<div
+								class="bg-gray-900 p-2 rounded-md text-white   text-sm font-medium">
+								<i class="pi pi-calendar" style="font-size: 1.5rem"></i>
+							</div>
+						</h:commandLink>
+
+						<h:commandLink class="cursor-pointer mb-3"
+							actionListener="#{templateController.redirect('/root/psicologo/editar-informacoes-psicologo.xhtml')}">
+							<div
+								class="text-gray-300 flex   hover:bg-gray-700 hover:text-white p-2 rounded-md text-sm font-medium">
+								<i class="pi pi-pencil" style="font-size: 1.2rem"></i>
+							</div>
+						</h:commandLink>
+						<h:commandLink class="cursor-pointer mb-3" target="_blank"
+							actionListener="#{templateController.redirect('/root/psicologo/relatorio-pacientes-por-cidade.xhtml')}">
+							<div
+								class="text-gray-300 flex  hover:bg-gray-700 hover:text-white p-2 rounded-md text-sm font-medium">
+
+								<i class="pi pi-chart-bar mr-2" style="font-size: 1.2rem"></i>
+
+							</div>
+						</h:commandLink>
+
+						<h:commandLink class="cursor-pointer mb-3"
+							actionListener="#{templateController.redirect('/root/psicologo/admin/gerenciar-consultorio.xhtml')}">
+							<div
+								class="text-gray-300 flex  hover:bg-gray-700 hover:text-white p-2 rounded-md text-sm font-medium">
+
+								<i class="pi pi-briefcase mr-2" style="font-size: 1.2rem"></i>
+
+							</div>
+						</h:commandLink>
+
+						<h:commandLink class="cursor-pointer mb-3"
+							actionListener="#{templateController.redirect('/root/psicologo/admin/gerenciar-estado.xhtml')}">
+							<div
+								class="text-gray-300 flex  hover:bg-gray-700 hover:text-white p-2 rounded-md text-sm font-medium">
+
+								<i class="pi pi-map mr-2" style="font-size: 1.2rem"></i>
+							</div>
+						</h:commandLink>
+
+
+
+						<h:commandLink class="cursor-pointer mb-3"
+							actionListener="#{templateController.redirect('/root/psicologo/admin/gerenciar-pessoa.xhtml')}">
+							<div
+								class="text-gray-300 flex  hover:bg-gray-700 hover:text-white p-2 rounded-md text-sm font-medium">
+
+								<i class="pi pi-users mr-2" style="font-size: 1.2rem"></i>
+
+							</div>
+						</h:commandLink>
+						<h:commandLink class="cursor-pointer mb-3"
+							actionListener="#{templateController.redirect('/root/psicologo/admin/gerenciar-paciente.xhtml')}">
+							<div
+								class="text-gray-300 flex  hover:bg-gray-700 hover:text-white p-2 rounded-md text-sm font-medium">
+
+								<i class="pi pi-heart mr-2" style="font-size: 1.2rem"></i>
+
+							</div>
+						</h:commandLink>
+						<h:commandLink class="cursor-pointer mb-3"
+							actionListener="#{templateController.redirect('/root/psicologo/admin/gerenciar-psicologo.xhtml')}">
+							<div
+								class="text-gray-300 flex  hover:bg-gray-700 hover:text-white p-2 rounded-md text-sm font-medium">
+
+								<i class="pi pi-star mr-2" style="font-size: 1.2rem"></i>
+
+							</div>
+						</h:commandLink>
+						<h:commandLink class="cursor-pointer mb-3"
+							actionListener="#{templateController.redirect('/root/psicologo/admin/gerenciar-cidade.xhtml')}">
+							<div
+								class="text-gray-300 flex  hover:bg-gray-700 hover:text-white p-2 rounded-md text-sm font-medium">
+
+								<i class="pi pi-map-marker mr-2" style="font-size: 1.2rem"></i>
+
+							</div>
+						</h:commandLink>
+
+					</div>
+				</div>
+
+
+
+			</div>
+			<h:commandLink
+				actionListener="#{templateController.encerrarSessao()}"
+				class="block cursor-pointer hover:bg-gray-700 hover:text-white rounded-md mr-3 px-4 py-2 text-sm text-gray-700"
+				role="menuitem" id="user-menu-item-2">
+				<i class="pi pi-sign-out" style="font-size: 1.2rem"></i>
+			</h:commandLink>
+		</h:form>
+
+	</nav>
+
+	<nav id="nav-bar-expandida"
+		class="bg-gray-800 hidden flex flex-col items-center justify-between  h-full px-2 w-2/12">
+		<h:form class="h-full flex-col flex justify-between">
+
+
+			<div class="flex flex-col justify-between items-center">
+				<div
+					class="my-3 text-gray-300 justify-between flex flex-row  items-center  hover:text-white w-full  text-sm font-medium">
+					<div class="w-1/2 p-4 block">
+						Logo
+						<p:graphicImage value="./resources/images/logo.svg"></p:graphicImage>
+					</div>
+					<div class="hover:bg-gray-700 rounded-md cursor-pointer  "
+						id="botao-nav-bar-expandida">
+						<i class="pi pi-align-right p-2" style="font-size: 1.7rem"></i>
+					</div>
+
+				</div>
+				<div class="elementsWrapper">
+
+
+					<h:commandLink class="cursor-pointer mb-3" aria-current="page"
+						actionListener="#{templateController.redirect('/root/psicologo/agenda-psicologo.xhtml')}">
+						<div
+							class="bg-gray-900 p-2 rounded-md text-white   text-sm font-medium">
+							<p class="flex  items-center">
+								<i class="pi pi-calendar mr-2" style="font-size: 1.5rem"></i>
+								Agenda
+							</p>
+
+						</div>
+					</h:commandLink>
+
+					<h:commandLink class="cursor-pointer mb-3"
+						actionListener="#{templateController.redirect('/root/psicologo/editar-informacoes-paciente.xhtml')}">
+						<div
+							class="text-gray-300 flex   hover:bg-gray-700 hover:text-white p-2 rounded-md text-sm font-medium">
+							<p class="flex  items-center">
+								<i class="pi pi-pencil mr-2" style="font-size: 1.2rem"></i>Meus
+								dados
+							</p>
+						</div>
+					</h:commandLink>
+					<h:commandLink class="cursor-pointer mb-3" target="_blank"
+						actionListener="#{templateController.redirect('/root/psicologo/relatorio-pacientes-por-cidade.xhtml')}">
+						<div
+							class="text-gray-300 flex  hover:bg-gray-700 hover:text-white p-2 rounded-md text-sm font-medium">
+							<p class="flex  items-center">
+								<i class="pi pi-chart-bar mr-2" style="font-size: 1.2rem"></i>
+								Relatório de Pacientes
+							</p>
+						</div>
+					</h:commandLink>
+
+					<h:commandLink class="cursor-pointer mb-3"
+						actionListener="#{templateController.redirect('/root/psicologo/admin/gerenciar-consultorio.xhtml')}">
+						<div
+							class="text-gray-300 flex  hover:bg-gray-700 hover:text-white p-2 rounded-md text-sm font-medium">
+							<p class="flex  items-center">
+								<i class="pi pi-briefcase mr-2" style="font-size: 1.2rem"></i>
+								Gerenciar consultorios
+							</p>
+						</div>
+					</h:commandLink>
+
+					<h:commandLink class="cursor-pointer mb-3"
+						actionListener="#{templateController.redirect('/root/psicologo/admin/gerenciar-estados.xhtml')}">
+						<div
+							class="text-gray-300 flex  hover:bg-gray-700 hover:text-white p-2 rounded-md text-sm font-medium">
+							<p class="flex  items-center">
+								<i class="pi pi-map mr-2" style="font-size: 1.2rem"></i>
+								Gerenciar estados
+							</p>
+						</div>
+					</h:commandLink>
+
+
+
+					<h:commandLink class="cursor-pointer mb-3"
+						actionListener="#{templateController.redirect('/root/psicologo/admin/gerenciar-pessoa.xhtml')}">
+						<div
+							class="text-gray-300 flex  hover:bg-gray-700 hover:text-white p-2 rounded-md text-sm font-medium">
+							<p class="flex  items-center">
+								<i class="pi pi-users mr-2" style="font-size: 1.2rem"></i>
+								Gerenciar pessoas
+							</p>
+						</div>
+					</h:commandLink>
+					<h:commandLink class="cursor-pointer mb-3"
+						actionListener="#{templateController.redirect('/root/psicologo/admin/gerenciar-paciente.xhtml')}">
+						<div
+							class="text-gray-300 flex  hover:bg-gray-700 hover:text-white p-2 rounded-md text-sm font-medium">
+							<p class="flex  items-center">
+								<i class="pi pi-heart mr-2" style="font-size: 1.2rem"></i>
+								Gerenciar Pacientes
+							</p>
+						</div>
+					</h:commandLink>
+					<h:commandLink class="cursor-pointer mb-3"
+						actionListener="#{templateController.redirect('/root/psicologo/admin/gerenciar-psicologo.xhtml')}">
+						<div
+							class="text-gray-300 flex  hover:bg-gray-700 hover:text-white p-2 rounded-md text-sm font-medium">
+							<p class="flex  items-center">
+								<i class="pi pi-star mr-2" style="font-size: 1.2rem"></i>
+								Gerenciar Psicologos
+							</p>
+						</div>
+					</h:commandLink>
+
+
+					<h:commandLink class="cursor-pointer mb-3"
+						actionListener="#{templateController.redirect('/root/psicologo/admin/gerenciar-cidade.xhtml')}">
+						<div
+							class="text-gray-300 flex  hover:bg-gray-700 hover:text-white p-2 rounded-md text-sm font-medium">
+							<p class="flex  items-center">
+								<i class="pi pi-map-marker mr-2" style="font-size: 1.2rem"></i>
+								Gerenciar cidades
+							</p>
+						</div>
+					</h:commandLink>
+
+
+
+				</div>
+
+			</div>
+
+			<div class="flex flex-row space-beteween">
+				<p class="hover:text-white mr-3 text-sm text-gray-700">
+					Copyright©2022<br />Erick Azevedo
+				</p>
+
+				<h:commandLink
+					class="block cursor-pointer hover:bg-gray-700 hover:text-white rounded-md mr-3 px-4 py-2 text-sm text-gray-700"
+					role="menuitem" id="user-menu-item-2">
+					<i class="pi pi-sign-out" style="font-size: 1.2rem"></i>
+				</h:commandLink>
+			</div>
+
+		</h:form>
+	</nav>
+
+
+	<script>
+	function setLinkBackgroundActualPage(){
+		const wrappers = document.getElementsByClassName("elementsWrapper");
+		const elements = [...wrappers[0].children,...wrappers[1].children];
+		for(element of elements) {
+			console.log(element.href)
+			console.log(window.location.href+"#")
+			if(element.href === window.location.href+"#"){
+			console.log(window.location.href)
+				element.children[0].classList = "bg-gray-900 p-2 rounded-md text-white text-sm font-medium";
+			}
+		}
+	}
+	setLinkBackgroundActualPage()
+	function addListenersNavBar(){
+		
+	
+		const navBarRetraida = document.getElementById("nav-bar-retraida")
+		const navBarExpandida = document.getElementById("nav-bar-expandida")
+		const botaoNavBarRetraida =  document.getElementById("botao-nav-bar-retraida")
+		const botaoNavBarExpandida = document.getElementById("botao-nav-bar-expandida")
+		botaoNavBarRetraida.addEventListener("click", ()=>{
+			navBarRetraida.style.display = "none";
+			navBarExpandida.style.display = "flex";
+		})
+		botaoNavBarExpandida.addEventListener("click", ()=>{
+			navBarRetraida.style.display = "flex";
+			navBarExpandida.style.display = "none";
+		})
+	}
+	addListenersNavBar()
+	</script>
+</composite:implementation>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=.67, maximum-scale=1.0, user-scalable=0">
+    <meta charset="utf-8">
+    <title>Obtenha Ajuda</title>
+    <link rel="icon" type="imagem/png" href="./images/logo.png" />
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/ajuda.css">
+    <link rel="stylesheet" href="./styles/principal.css">
+</head>
+
+<body>
+    <nav id="navegacao">
+        <img id="logo" src="./images/logo.png">
+        <ul id="paginas">
+            <li><a href="./index.html" id="link-nav">Home</a></li>
+            <li><a href="./produtos.html" id="link-nav">Nossos produtos</a></li>
+            <li><a id="link-nav">Ajuda</a></li>
+            <li><a href="./sobre.html" id="link-nav">Sobre nós</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="container">
+            <p id="texto-ajuda">Para obter ajuda, abra um tópico aqui. Será respondido em breve</p>
+            <div id="problemas">
+            </div>
+            <div id="entrada">
+                <p id="texto">Abrir tópico</p>
+                <ul>
+                    <li>
+                <input type="text" placeholder="Insira o nome do tópico" id="topicname" required>
+                    </li>
+                    <li>
+                <input type="text" placeholder="Insira seu nome" id="name" required>
+            </li><li>
+                <input type="email" placeholder="Insira seu email" id="email" required>
+            </li>
+            <li>
+                <textarea placeholder="Insira seu problema" id="problem" required ></textarea>
+            </li><li>
+                <button id="botao" onclick="add()">ENVIAR</button>
+            </li>
+            </ul>
+            </div>
+        </div>
+    </main>
+    <footer id="rodape">
+        <div id="container-rodape">
+            <ul>
+                <li>CNPJ:94373135000146</li>
+                <li><p>
+                    CEP 01049911<br>
+                    Endereço:Rua Formosa 367 - São Paulo/SP - Centro<br>
+                </p></li>
+                <li>
+                    <p>&copy;Erick Azevedo</p>
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <script src="./js/ajuda.js"> </script>
+</body>
+
+</html>

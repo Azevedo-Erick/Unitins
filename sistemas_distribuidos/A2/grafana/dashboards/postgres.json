@@ -1,0 +1,69 @@
+{
+    "title": "Postgres",
+    "annotations": {
+      "list": []
+    },
+    "dashboard": {
+      "id": null,
+      "uid": "postgres-dashboard",
+      "title": "PostgreSQL Metrics",
+      "tags": [],
+      "timezone": "browser",
+      "schemaVersion": 27,
+      "version": 1,
+      "refresh": "5s",
+      "panels": [
+        {
+          "type": "graph",
+          "title": "PostgreSQL Connections",
+          "targets": [
+            {
+              "expr": "pg_stat_activity_count{job=\"postgres_exporter\"}",
+              "legendFormat": "Connections",
+              "interval": "15s"
+            }
+          ],
+          "gridPos": {
+            "x": 0,
+            "y": 0,
+            "w": 12,
+            "h": 6
+          }
+        },
+        {
+          "type": "graph",
+          "title": "PostgreSQL Database Size",
+          "targets": [
+            {
+              "expr": "pg_database_size{job=\"postgres_exporter\"}",
+              "legendFormat": "Database Size",
+              "interval": "15s"
+            }
+          ],
+          "gridPos": {
+            "x": 0,
+            "y": 6,
+            "w": 12,
+            "h": 6
+          }
+        },
+        {
+          "type": "table",
+          "title": "Service Status",
+          "targets": [
+            {
+              "expr": "up{job=\"postgres_exporter\"}",
+              "interval": "15s"
+            }
+          ],
+          "gridPos": {
+            "x": 0,
+            "y": 12,
+            "w": 12,
+            "h": 6
+          }
+        }
+      ]
+    }
+  }
+  

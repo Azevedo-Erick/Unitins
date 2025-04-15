@@ -1,0 +1,69 @@
+{
+    "title": "Prometheus Metrics",
+    "annotations": {
+      "list": []
+    },
+    "dashboard": {
+      "id": null,
+      "uid": "prometheus-dashboard",
+      "title": "Prometheus Metrics",
+      "tags": [],
+      "timezone": "browser",
+      "schemaVersion": 27,
+      "version": 1,
+      "refresh": "5s",
+      "panels": [
+        {
+          "type": "graph",
+          "title": "Prometheus Uptime",
+          "targets": [
+            {
+              "expr": "up{job=\"prometheus\"}",
+              "legendFormat": "Prometheus Status",
+              "interval": "15s"
+            }
+          ],
+          "gridPos": {
+            "x": 0,
+            "y": 0,
+            "w": 12,
+            "h": 6
+          }
+        },
+        {
+          "type": "graph",
+          "title": "Prometheus Scrape Duration",
+          "targets": [
+            {
+              "expr": "rate(prometheus_scrape_duration_seconds_sum{job=\"prometheus\"}[5m])",
+              "legendFormat": "Scrape Duration",
+              "interval": "15s"
+            }
+          ],
+          "gridPos": {
+            "x": 0,
+            "y": 6,
+            "w": 12,
+            "h": 6
+          }
+        },
+        {
+          "type": "table",
+          "title": "Service Status",
+          "targets": [
+            {
+              "expr": "up{job=\"prometheus\"}",
+              "interval": "15s"
+            }
+          ],
+          "gridPos": {
+            "x": 0,
+            "y": 12,
+            "w": 12,
+            "h": 6
+          }
+        }
+      ]
+    }
+  }
+  

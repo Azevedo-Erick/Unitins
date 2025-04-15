@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Login</title>
+	<link rel="stylesheet" href="./resources/css/reset.css" />
+
+	<link rel="stylesheet"
+		href="https://unpkg.com/primeflex@3.1.0/primeflex.css" />
+</h:head>
+<h:body>
+	<ui:composition template="./template.xhtml">
+
+		<ui:define name="content">
+			<div
+				class="bg-gray-800  flex justify-center items-center h-screen w-screen   ">
+
+				<div class="shadow-gray-700 shadow-2xl max-w-min">
+					<p:panel header="Login" id="panelLogin" style="display:block">
+						<h:form class=" flex flex-col justify-content-evenly">
+							<p:growl id="growl" />
+							<div class="flex flex-col">
+								<p:outputLabel value="Email " />
+
+								<p:inputText placeholder="Email" class="w-full" required="true"
+									requiredMessage="Insira seu email"
+									value="#{loginController.pessoa.email}">
+									<f:validateRegex pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}"></f:validateRegex>
+								</p:inputText>
+
+							</div>
+							<div class="flex flex-row items-center">
+								<div class="flex flex-col" style="margin: 10px 0;">
+									<p:outputLabel value="Senha " />
+									<div class="flex flex-row w-full items-center">
+
+										<p:password value="#{loginController.pessoa.senha}"
+											required="true" requiredMessage="Insira sua senha"
+											toggleMask="true" redisplay="true" />
+
+
+									</div>
+									<div class="flex flex-row items-center justify-between"
+										style="margin: 10px 0;">
+										<p:outputLabel value="Psicologo" />
+										<p:toggleSwitch value="#{loginController.logarComoPaciente}" />
+										<p:outputLabel value="Paciente" />
+									</div>
+								</div>
+							</div>
+							<center>
+								<p:commandButton style="margin:10px 0;width:50%;" update="@form"
+									value="Entrar" icon="pi pi-key" styleClass="ui-button-raised"
+									actionListener="#{loginController.login()}" />
+							</center>
+						</h:form>
+						<f:facet name="footer">
+							<p:commandLink style="margin:10px 0;width:50%;"
+								value="Esqueci a senha"
+								
+								actionListener="#{templateController.redirect('/esqueci-a-senha.xhtml')}" />
+							<p:commandButton type="button" value="Não possuo conta"
+								id="botaoCadastro" icon="pi pi-user-edit"
+								class="ui-button-outlined-secondary " />
+							<div class="mr-4"></div>
+						</f:facet>
+					</p:panel>
+				</div>
+
+				<p:panel header="Cadastro" id="panelCadastro" style="display:none">
+					<h:form class="login-form flex flex-col justify-content-evenly">
+						<p:growl id="growl" />
+						<div class="flex flex-row">
+
+							<div class="login-form flex flex-col">
+								<p:outputLabel value="Nome " />
+								<div class="ui-inputgroup">
+									<div class="ui-inputgroup-addon">
+										<i class="pi pi-user"></i>
+									</div>
+									<p:inputText placeholder="Nome"
+									required="true"
+									requiredMessage="Insira seu nome"
+										value="#{loginController.pessoa.nome}" />
+								</div>
+							</div>
+							<div class="login-form flex flex-col">
+								<p:outputLabel value="Sobrenome " />
+								<div class="ui-inputgroup">
+									<div class="ui-inputgroup-addon">
+										<i class="pi pi-user"></i>
+									</div>
+									<p:inputText placeholder="Sobrenome"
+									required="true"
+									requiredMessage="Insira seu sobrenome"
+										value="#{loginController.pessoa.sobrenome}" />
+								</div>
+							</div>
+						</div>
+						<div class="flex flex-row">
+							<div class="login-form flex flex-col" style="margin: 10px 0;">
+								<p:outputLabel value="CPF " />
+								<div class="ui-inputgroup">
+									<div class="ui-inputgroup-addon">
+										<i class="pi pi-tags"></i>
+									</div>
+									<p:inputText placeholder="CPF"
+									required="true"
+									requiredMessage="Insira seu CPF"
+									
+										value="#{loginController.pessoa.cpf}" >
+										
+										</p:inputText>
+								</div>
+							</div>
+							<div class="login-form flex flex-col">
+								<p:outputLabel value="Email " />
+								<div class="ui-inputgroup">
+									<div class="ui-inputgroup-addon">
+										<i class="pi pi-inbox"></i>
+									</div>
+									<p:inputText placeholder="Email"
+									required="true"
+									requiredMessage="Insira seu email"
+										value="#{loginController.pessoa.email}">
+										<f:validateRegex pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}"></f:validateRegex>
+									</p:inputText>
+								</div>
+							</div>
+						</div>
+						<div class="login-form flex flex-col" style="margin: 10px 0;">
+							<p:outputLabel value="Senha " />
+							<div class="w-full">
+								<p:password value="#{loginController.pessoa.senha}"
+									toggleMask="true" required="true" requiredMessage="Insira sua senha" redisplay="true" />
+
+							</div>
+						</div>
+						<center>
+							<p:commandButton update="@form" style="margin:10px 0;width:50%;"
+								value="Cadastrar" icon="pi pi-unlock"
+								styleClass="ui-button-raised"
+								actionListener="#{loginController.cadastrar()}" />
+						</center>
+					</h:form>
+					<f:facet name="footer">
+						<div class="flex flex-row ">
+							<p:commandButton type="button" value="Tenho conta"
+								id="botaoLogin" icon="pi pi-key" class="ui-button-outlined " />
+							<div class="mr-4"></div>
+
+						</div>
+					</f:facet>
+				</p:panel>
+			</div>
+			<script>
+				const botaoLogin = document.getElementById('botaoLogin');
+				const botaoCadastro = document.getElementById('botaoCadastro');
+				const panelLogin = document.getElementById('panelLogin');
+				const panelCadastro = document.getElementById('panelCadastro');
+				botaoLogin.addEventListener('click', ()=>{
+					panelLogin.style.display = "block";
+					panelCadastro.style.display = "none";
+				})
+				botaoCadastro.addEventListener('click', ()=>{
+					panelLogin.style.display = "none";
+					panelCadastro.style.display = "block";
+				})
+				
+			</script>
+
+		</ui:define>
+	</ui:composition>
+
+
+</h:body>
+</html>

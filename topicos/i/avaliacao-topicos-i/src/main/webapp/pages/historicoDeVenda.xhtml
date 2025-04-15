@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1993/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Hello, World!</title>
+
+	<meta charset="utf-8"></meta>
+</h:head>
+<h:body onload="#{carrinhoController.click()}">
+
+	<ui:composition template="./template.xhtml">
+		<ui:define name="conteudo">
+		<div class="lista-compras">
+		
+			<ui:repeat var="obj" value="#{historicoVendaController.listaVenda}">
+			<div class="list-tile">
+			<div>
+			</div>
+				<div class="tile-content">
+					<p>Compra realizada em #{obj.formatDate()} às #{obj.formatTime()}</p>
+					<p class="value">R$#{obj.formatPrice()}</p>
+				</div>
+			<h:form>
+				<h:commandButton actionListener="#{historicoVendaController.selectVenda(obj)}" value="🔎"></h:commandButton>
+				</h:form>
+				</div>
+			</ui:repeat>
+				</div>
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+
+</html>

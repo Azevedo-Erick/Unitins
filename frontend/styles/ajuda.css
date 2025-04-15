@@ -1,0 +1,171 @@
+#texto{
+    font-family: -apple-system, 'Segoe UI', Ubuntu, Cantarell,'Helvetica Neue', sans-serif;
+    font-size: 28px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+#texto-ajuda{
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    color: #fff;
+    text-align: center;
+    margin: 2%;
+}
+/*Caixa para criar a mensagem*/
+#entrada{
+    background-color: #fff;
+    border: 2px solid #6193c9;
+    border-radius: 3px;
+    border-radius: 10px;
+}
+#topicname , #name, #email, #problem{
+    border: 1px solid #000;
+    border-radius: 10px;
+    transition: 200ms;
+}
+#topicname::-webkit-input-placeholder , #name::-webkit-input-placeholder,
+ #email::-webkit-input-placeholder, #problem::-webkit-input-placeholder{
+    color: rgb(31, 17, 0);
+
+}
+#topicname:hover , #name:hover, #email:hover, #problem:hover{
+    border: 2px solid rgb(12, 32, 58);
+}
+#botao{
+    border: 1px solid #1f2c3a;
+    border-radius: 5px;
+    background-color: rgb(12, 32, 58);
+    color: #fff;
+    transition: 300ms;
+}
+#botao:hover{
+    background-color: rgb(12, 71, 150);
+}
+#botao:active{
+    background-color: rgb(7, 163, 155);
+}
+#redes-sociais ul li p{
+    text-transform: uppercase;
+}
+
+/*Perguntas enviadas*/
+.problema{
+    border: 3px solid #14616b;
+    background-color: #1f2c3a;
+    margin: 4vw;
+}
+.problema p{
+    font-family: -apple-system, 'Segoe UI', Ubuntu, Cantarell,'Helvetica Neue', sans-serif;
+    
+}
+/*Quando a pergunta for enviada*/
+.titulo{
+    font-weight: bold;
+    text-transform: uppercase;  
+    color: rgb(196, 196, 196); 
+}
+.nome{
+    color: rgb(156, 156, 156);
+}
+.email{
+    font-size: 12px;
+    font-style: italic;
+    color: rgb(109, 109, 109);
+}
+.texto{
+    margin-top: 2%;
+    font-size: 16px;
+    color: #fff;
+    height: 20vh;
+    word-wrap:break-word;
+}
+
+
+@media(orientation:landscape){
+    /*Caixa para criar a mensagem*/
+    #entrada{
+        width: 60%;
+        margin: 1% auto 2% 14%;
+        padding: 1%;
+    }
+    #topicname , #name, #email, #problem{
+        height: 6vh;
+        width: 30vw;
+        margin: 2px;
+        font-size: 1.2rem;
+    }
+    #problem{
+        width: 58vw;
+        height: 30vh;
+        resize: none;
+    }
+    #botao{
+        padding: 4px;
+    }
+    #entrada p{
+        margin: 1% 0% 2% 1%;
+    }
+    /*Perguntas enviadas*/
+    #problemas{
+        margin-left: 25%;
+        margin-right: 0%;
+    }
+    .problema{
+        border-radius: 10px;
+        padding: 10px 20px 10px 10px;
+        width: 50%;
+        margin: 0 auto 1vh;
+    }
+    /*Quando a pergunta for enviada*/
+    .titulo{
+        font-size: 1.25em;
+    }
+ }
+@media(orientation:portrait){
+    /*Caixa para criar a mensagem*/
+    #entrada{
+        width: 70vw;
+        height: 70vh;
+        margin: 1% auto 2% 14%;
+        padding: 2%;
+    }
+    #topicname , #name, #email, #problem{
+        height: 6vh;
+        width: 60vw;
+        margin: 2px;
+        font-size: 5vw;
+    }
+    #topicname::placeholder , #name::placeholder, #email::placeholder, #problem::placeholder{
+        font-size: 5vw;
+        font-family: -apple-system,  'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+        color: #000;
+    }
+    #problem{
+        width: 65vw;
+        height: 35vh;
+        resize: none;
+    }
+    #botao{
+        padding: 5px;
+    }
+    #entrada p{
+        margin: 1% 0% 2% 1%;
+    }
+    /*Perguntas enviadas*/
+    #problemas{
+        margin-left: 25%;
+        margin-right: 0%;
+    }
+    .problema{
+        border-radius: 10px;
+        padding: 10px 20px 10px 10px;
+        width: 50%;
+        margin: 0 auto 1vh;
+    }
+    /*Quando a pergunta for enviada*/
+    .titulo{
+        font-size: 1.25em;
+        font-weight: bold; 
+    }
+}

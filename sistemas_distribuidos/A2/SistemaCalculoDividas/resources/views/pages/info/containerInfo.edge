@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Container Info</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 min-h-screen flex items-center justify-center">
+    <div class="bg-white shadow-lg rounded-2xl p-8 max-w-md w-full text-center">
+        <h1 class="text-2xl font-bold mb-6 text-blue-600">Informações do Container</h1>
+        <div class="space-y-4">
+            <p class="text-lg">
+                <span class="font-semibold text-gray-700">IP do Container:</span><br>
+                <span class="text-gray-900">{{ containerIp }}</span>
+            </p>
+            <p class="text-lg">
+                <span class="font-semibold text-gray-700">Hostname:</span><br>
+                <span class="text-gray-900">{{ hostname }}</span>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

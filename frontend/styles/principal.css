@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Text&family=Goldman:wght@700&family=Anton&display=swap');
+/*Barra de rolagem*/
+::-webkit-scrollbar{
+    width: 8px;
+}
+::-webkit-scrollbar-track{
+    background-color: #f1f1f1;
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #888;
+    border-radius: 5px;
+}
+::webkit-scrollbar-thumb:hover{
+    background-color: #555;
+}
+
+:root{
+    font-family: 'Goldman', cursive;
+}
+
+body{
+    background-color: #17222e;
+    width: 100%;
+    height: auto;
+}
+/*Barra de navegação*/
+#navegacao{
+    display: flex; 
+    background-color: rgba(53, 74, 95,0.3);
+    width: 100%;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+#paginas li{
+    padding-left: 20px;
+    text-align: justify;
+    font-family: 'Goldman', cursive;
+    font-weight: bold;
+    font-size: 2rem;
+    color: #fff;
+    text-shadow: 2px 2px 2px #000;
+}
+#logo{
+    height: 4em;
+    animation: acenderApagar 2000ms alternate infinite;
+}
+@keyframes acenderApagar{
+    0%{
+        opacity: 0.40;
+    }
+    100%{
+        opacity: 0.8;
+    }
+}
+/*Mudança no tamanho do container*/
+.container{
+    width: 100%;
+    margin: auto;
+}
+
+/*Trecho do rodapé*/
+#rodape{
+    border-top: 3px solid #fff;
+    display: block;
+    align-self: center;
+    color: #fff;
+    background-color: rgba(30, 43, 56, 0.9);
+    width: 99%;
+    padding: 1% 0 0 1%;
+    height: 12vh;
+}
+/*Formatação de links*/
+
+#link-nav{
+    color: rgba(150, 150, 150, 0.774);
+    text-decoration: none;
+    transition: 300ms;
+    text-shadow: 2px 2px 2px #000;
+}
+#link-nav:hover{
+    color: #fff;
+}
+@media(orientation: landscape){
+        /*Barra de navegação*/
+    #navegacao{
+        width: 100%;
+    }
+    #paginas{
+        margin:0 auto;
+    }
+    #paginas li{
+        padding: 2vh 0.5vw;
+        text-align: justify;
+    }
+    #logo{
+        height: 13vh;
+        margin: 1% 42%;
+    }
+    nav ul li{
+        display: inline-block;
+
+        
+    }
+    nav ul li a{
+        font-size: 3.5vw;
+        color: #fff;
+    }
+
+}
+@media(orientation:portrait) {
+    #navegacao{
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+    #paginas{
+        float: right;
+        margin: 1% 2% 2% 25%;
+    }
+    #paginas li{
+        padding-left: 10px;
+        text-align: justify;
+    }
+    #logo{
+        height: 11vh;
+        margin: 2% 0 2% 34%;
+    }
+    nav ul li a{
+        font-size: 4vh;
+        color: #fff;
+    }
+}

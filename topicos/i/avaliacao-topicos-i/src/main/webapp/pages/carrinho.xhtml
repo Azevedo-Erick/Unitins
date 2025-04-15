@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1993/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Hello, World!</title>
+
+	<meta charset="utf-8"></meta>
+</h:head>
+<h:body onload="#{carrinhoController.click()}">
+	<ui:composition template="./template.xhtml">
+		<ui:define name="conteudo">
+			<h:form>
+				<h:commandButton value="Voltar"></h:commandButton>
+				<h:messages class="messages" id="messages" errorStyle="color:red;margin:8px;"
+						warnStyle="color:yellow;margin:8px;"
+						infoStyle="color:green;margin:8px;" />
+			
+			<div class="carrinho-container">
+			
+				<div class="elements-container">
+					<ui:repeat var="obj" value="#{carrinhoController.listaJogoVenda}">
+					<div class="carrinho-element-wrapper">
+						<div class="carrinho-column">
+								<p class="carrinho-game-title">#{obj.jogo.nome}</p>
+									<div class="carrinho-row">
+										<h:commandButton actionListener="#{obj.red()}" value="-"></h:commandButton>
+										<h:inputText value="#{obj.quantidade}" a:type="number"></h:inputText>
+										<h:commandButton actionListener="#{obj.add()}" value="+"></h:commandButton>
+									</div>
+							</div>
+								<p>R$ #{carrinhoController.formatPrice(obj.valor)}</p>
+						</div>
+					</ui:repeat>
+				</div>
+				<div class="finalize-container">
+					<div>
+						<p>Deseja finalizar a compra com #{carrinhoController.listaJogoVenda.size()}  elementos ?</p>
+						<h:inputText id="cupaum" a:placeholder="Digite aqui o cupom" value="#{carrinhoController.cupom.codigo}"></h:inputText>
+						<h:commandButton value="Aplicar Cupom" actionListener="#{carrinhoController.aplicarCupom()}">
+						<f:ajax execute="cupaum" render="@form"></f:ajax>
+						</h:commandButton>
+						<BR /><h:commandButton value="Finalizar Compra" actionListener="#{carrinhoController.finalizar()}">
+						<f:ajax execute="@this" render="messages @form"></f:ajax>
+						</h:commandButton>
+					</div>
+						<p id="total">Total: R$ #{carrinhoController.valorTotal()}</p>
+				</div>
+			</div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+
+</html>

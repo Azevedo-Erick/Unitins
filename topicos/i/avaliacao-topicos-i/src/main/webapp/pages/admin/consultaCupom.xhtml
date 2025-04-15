@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1993/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Hello, World!</title>
+	<meta charset="utf-8"></meta>
+
+</h:head>
+<h:body>
+	<ui:composition template="../template.xhtml">
+		<ui:define name="conteudo">
+			<div class="table-wrapper">
+				<h:form>
+					<h:dataTable var="obj"
+						value="#{consultaCupomController.listaCupom}" class="tabela">
+						<h:column class="w">
+							<f:facet name="header">Código</f:facet>
+							<h:outputLabel value="#{obj.codigo}" />
+						</h:column>
+
+						<h:column class="b">
+							<f:facet name="header">Porcentagem</f:facet>
+							<h:outputLabel value="#{obj.porcentagem}" />
+						</h:column>
+
+						<h:column class="w">
+							<f:facet name="header">Ativo</f:facet>
+							<h:outputLabel value="#{obj.ativo}" />
+						</h:column>
+
+						<h:column>
+						<f:facet name="header"><h:commandButton actionListener='#{consultaCupomController.redirecionar("/pages/admin/cadastrarCupom.xhtml")}'
+						value="+"></h:commandButton></f:facet>
+						<h:commandButton value="Editar"
+							actionListener="#{consultaCupomController.selectCupom(obj)}"></h:commandButton>
+						</h:column>
+					</h:dataTable>
+					
+				</h:form>
+			</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
+
+</html>

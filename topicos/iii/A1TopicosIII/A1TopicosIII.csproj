@@ -1,0 +1,585 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9A7A3A81-8AF6-4556-9AAD-B3A628CD4A39}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>A1TopicosIII</RootNamespace>
+    <AssemblyName>A1TopicosIII</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Connected Services\CorreiosApi\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Context.cs" />
+    <Compile Include="Migrations\202209251657527_InitialCreate.cs" />
+    <Compile Include="Migrations\202209251657527_InitialCreate.designer.cs">
+      <DependentUpon>202209251657527_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209252050026_userUpdate.cs" />
+    <Compile Include="Migrations\202209252050026_userUpdate.designer.cs">
+      <DependentUpon>202209252050026_userUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209280106366_Remocao_cidade_estado.cs" />
+    <Compile Include="Migrations\202209280106366_Remocao_cidade_estado.designer.cs">
+      <DependentUpon>202209280106366_Remocao_cidade_estado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209280113451_remocao_fax_email.cs" />
+    <Compile Include="Migrations\202209280113451_remocao_fax_email.designer.cs">
+      <DependentUpon>202209280113451_remocao_fax_email.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209280119554_remocao_telefone.cs" />
+    <Compile Include="Migrations\202209280119554_remocao_telefone.designer.cs">
+      <DependentUpon>202209280119554_remocao_telefone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209290120596_adicao_responsavel_contrato.cs" />
+    <Compile Include="Migrations\202209290120596_adicao_responsavel_contrato.designer.cs">
+      <DependentUpon>202209290120596_adicao_responsavel_contrato.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202210022057436_correcao_empresa_resonsavel.cs" />
+    <Compile Include="Migrations\202210022057436_correcao_empresa_resonsavel.designer.cs">
+      <DependentUpon>202210022057436_correcao_empresa_resonsavel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Log.cs" />
+    <Compile Include="Models\ContatoResponsavelEmpresa.cs" />
+    <Compile Include="Models\Contrato.cs" />
+    <Compile Include="Models\Empresa.cs" />
+    <Compile Include="Models\ObservableListSource.cs" />
+    <Compile Include="Models\Usuario.cs" />
+    <Compile Include="tp3DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>tp3DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\Logger.cs" />
+    <Compile Include="Views\Administrador\Forms\FormContrato\ContratoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Administrador\Forms\FormContrato\ContratoForm.Designer.cs">
+      <DependentUpon>ContratoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administrador\Forms\FormContrato\DataTableEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Administrador\Forms\FormContrato\DataTableEmpresa.Designer.cs">
+      <DependentUpon>DataTableEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administrador\Forms\FormContrato\DataTableGerente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Administrador\Forms\FormContrato\DataTableGerente.Designer.cs">
+      <DependentUpon>DataTableGerente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administrador\Forms\FormEmpresa\EmpresaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Administrador\Forms\FormEmpresa\EmpresaForm.Designer.cs">
+      <DependentUpon>EmpresaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administrador\Forms\FormEmpresa\InformacoesDetalhes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Administrador\Forms\FormEmpresa\InformacoesDetalhes.Designer.cs">
+      <DependentUpon>InformacoesDetalhes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administrador\Forms\FormEmpresa\InformacoesResponsavelEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Administrador\Forms\FormEmpresa\InformacoesResponsavelEmpresa.Designer.cs">
+      <DependentUpon>InformacoesResponsavelEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administrador\Forms\FormResponsavelEmpresa\InformacoesDetalhesResponsavelEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Administrador\Forms\FormResponsavelEmpresa\InformacoesDetalhesResponsavelEmpresa.Designer.cs">
+      <DependentUpon>InformacoesDetalhesResponsavelEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administrador\Forms\FormUsuario\InformacoesAcesso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Administrador\Forms\FormUsuario\InformacoesAcesso.Designer.cs">
+      <DependentUpon>InformacoesAcesso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administrador\Forms\Shared\InformacoesEndereco.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Administrador\Forms\Shared\InformacoesEndereco.Designer.cs">
+      <DependentUpon>InformacoesEndereco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administrador\Forms\FormUsuario\InformacoesPessoais.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Administrador\Forms\FormUsuario\InformacoesPessoais.Designer.cs">
+      <DependentUpon>InformacoesPessoais.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administrador\Forms\FormResponsavelEmpresa\ResponsavelEmpresaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Administrador\Forms\FormResponsavelEmpresa\ResponsavelEmpresaForm.Designer.cs">
+      <DependentUpon>ResponsavelEmpresaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administrador\Forms\FormUsuario\UsuarioForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Administrador\Forms\FormUsuario\UsuarioForm.Designer.cs">
+      <DependentUpon>UsuarioForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administrador\Forms\Shared\InformacoesContato.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Administrador\Forms\Shared\InformacoesContato.Designer.cs">
+      <DependentUpon>InformacoesContato.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administrador\GerenciarContratos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Administrador\GerenciarContratos.Designer.cs">
+      <DependentUpon>GerenciarContratos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administrador\GerenciarResponsaveisEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Administrador\GerenciarResponsaveisEmpresa.Designer.cs">
+      <DependentUpon>GerenciarResponsaveisEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administrador\GerenciarUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Administrador\GerenciarUsuarios.Designer.cs">
+      <DependentUpon>GerenciarUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administrador\GerenciarEmpresas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Administrador\GerenciarEmpresas.Designer.cs">
+      <DependentUpon>GerenciarEmpresas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Cadastro.Designer.cs">
+      <DependentUpon>Cadastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administrador\IndexAdministrador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Administrador\IndexAdministrador.Designer.cs">
+      <DependentUpon>IndexAdministrador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gerente\IndexGerente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Gerente\IndexGerente.Designer.cs">
+      <DependentUpon>IndexGerente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Public\AtualizarDados\AtualizarDadosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Public\AtualizarDados\AtualizarDadosForm.Designer.cs">
+      <DependentUpon>AtualizarDadosForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Public\AtualizarDados\Acesso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Public\AtualizarDados\Acesso.Designer.cs">
+      <DependentUpon>Acesso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Public\AtualizarDados\DadosPessoais.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Public\AtualizarDados\DadosPessoais.Designer.cs">
+      <DependentUpon>DadosPessoais.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UsuarioComum\IndexUsuarioComum.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\UsuarioComum\IndexUsuarioComum.Designer.cs">
+      <DependentUpon>IndexUsuarioComum.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Migrations\202209251657527_InitialCreate.resx">
+      <DependentUpon>202209251657527_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209252050026_userUpdate.resx">
+      <DependentUpon>202209252050026_userUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209280106366_Remocao_cidade_estado.resx">
+      <DependentUpon>202209280106366_Remocao_cidade_estado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209280113451_remocao_fax_email.resx">
+      <DependentUpon>202209280113451_remocao_fax_email.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209280119554_remocao_telefone.resx">
+      <DependentUpon>202209280119554_remocao_telefone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209290120596_adicao_responsavel_contrato.resx">
+      <DependentUpon>202209290120596_adicao_responsavel_contrato.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202210022057436_correcao_empresa_resonsavel.resx">
+      <DependentUpon>202210022057436_correcao_empresa_resonsavel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Views\Administrador\Forms\FormContrato\ContratoForm.resx">
+      <DependentUpon>ContratoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Administrador\Forms\FormContrato\DataTableEmpresa.resx">
+      <DependentUpon>DataTableEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Administrador\Forms\FormContrato\DataTableGerente.resx">
+      <DependentUpon>DataTableGerente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Administrador\Forms\FormEmpresa\EmpresaForm.resx">
+      <DependentUpon>EmpresaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Administrador\Forms\FormEmpresa\InformacoesDetalhes.resx">
+      <DependentUpon>InformacoesDetalhes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Administrador\Forms\FormEmpresa\InformacoesResponsavelEmpresa.resx">
+      <DependentUpon>InformacoesResponsavelEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Administrador\Forms\FormResponsavelEmpresa\InformacoesDetalhesResponsavelEmpresa.resx">
+      <DependentUpon>InformacoesDetalhesResponsavelEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Administrador\Forms\FormResponsavelEmpresa\ResponsavelEmpresaForm.resx">
+      <DependentUpon>ResponsavelEmpresaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Administrador\Forms\FormUsuario\InformacoesAcesso.resx">
+      <DependentUpon>InformacoesAcesso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Administrador\Forms\Shared\InformacoesContato.resx">
+      <DependentUpon>InformacoesContato.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Administrador\Forms\Shared\InformacoesEndereco.resx">
+      <DependentUpon>InformacoesEndereco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Administrador\Forms\FormUsuario\InformacoesPessoais.resx">
+      <DependentUpon>InformacoesPessoais.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Administrador\Forms\FormUsuario\UsuarioForm.resx">
+      <DependentUpon>UsuarioForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Administrador\GerenciarContratos.resx">
+      <DependentUpon>GerenciarContratos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Administrador\GerenciarEmpresas.resx">
+      <DependentUpon>GerenciarEmpresas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Administrador\GerenciarResponsaveisEmpresa.resx">
+      <DependentUpon>GerenciarResponsaveisEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Administrador\GerenciarUsuarios.resx">
+      <DependentUpon>GerenciarUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Cadastro.resx">
+      <DependentUpon>Cadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Administrador\IndexAdministrador.resx">
+      <DependentUpon>IndexAdministrador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Public\AtualizarDados\Acesso.resx">
+      <DependentUpon>Acesso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Public\AtualizarDados\AtualizarDadosForm.resx">
+      <DependentUpon>AtualizarDadosForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Public\AtualizarDados\DadosPessoais.resx">
+      <DependentUpon>DadosPessoais.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UsuarioComum\IndexUsuarioComum.resx">
+      <DependentUpon>IndexUsuarioComum.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.atualizaPagamentoNaEntregaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.atualizaRemessaAgrupadaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.bloquearObjetoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.buscaClienteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.buscaContratoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.buscaDataAtualResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.buscaOpcoesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.buscaPagamentoEntregaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.buscaServicosAdicionaisAtivosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.buscaServicosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.buscaServicosValorDeclaradoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.buscaServicosXServicosAdicionaisResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.buscaTarifaValeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.calculaTarifaServicoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.cancelarObjetoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.cancelarPedidoScolResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.clienteERP.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.consultaCEPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.contratoERP.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.dimensaoTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.embalagemLRSMaster.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.enderecoERP.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.fechaPlpResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.fechaPlpVariosServicosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.geraDigitoVerificadorEtiquetasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.getStatusCartaoPostagemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.getStatusPLPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.integrarUsuarioScolResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.mensagemParametrizadaTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.obterClienteAtualizacaoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.obterEmbalagemLRSResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.obterMensagemParametrizadaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.pesquisarDimensoesServicoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.pesquisarEmbalagensPorServicoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.pesquisarParametrosPorDescricaoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.pesquisarServicosAdicionaisResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.retornoCancelamento.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.servicoAdicionalTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.servicoAdicionalXML.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.servicoERP.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.solicitaEtiquetasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.solicitaPLPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.solicitarPostagemScolResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.solicitaXmlPlpResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.statusCartao.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.statusPlp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.tipoEmbalagem.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.valePostal.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.validaEtiquetaPLPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.validaPlpResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.validarPostagemReversaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.validarPostagemSimultaneaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.verificaDisponibilidadeServicoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.verificaModalTransporteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\A1TopicosIII.CorreiosApi.VerificaSeTodosObjetosCanceladosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CorreiosApi\AtendeClienteService.wsdl" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="tp3DataSet.xsc">
+      <DependentUpon>tp3DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="tp3DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>tp3DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="tp3DataSet.xss">
+      <DependentUpon>tp3DataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\Mappings\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\CorreiosApi\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CorreiosApi\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CorreiosApi\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CorreiosApi\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este projeto faz referência a pacotes do NuGet que não estão presentes neste computador. Use a Restauração de Pacotes do NuGet para baixá-los.  Para obter mais informações, consulte http://go.microsoft.com/fwlink/?LinkID=322105. O arquivo ausente é {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>

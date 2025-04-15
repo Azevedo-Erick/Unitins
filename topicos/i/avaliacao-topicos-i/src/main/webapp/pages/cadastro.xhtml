@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1993/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Hello, World!</title>
+
+	<meta charset="utf-8"></meta>
+</h:head>
+<h:body>
+	<ui:composition template="./template.xhtml">
+		<ui:define name="conteudo">
+			<div class="login-container">
+				<h:form class="form-container">
+					<h:messages id="messages" errorStyle="color:red;margin:8px;"
+						warnStyle="color:yellow;margin:8px;"
+						infoStyle="color:green;margin:8px;" />
+					<h2>Cadastro</h2>
+					<div class="input-login-container" id="envelope">
+						<i class="fa fa-envelope icon"></i>
+						<h:inputText a:placeholder="Email" onblur="emailValidator"
+							value="#{cadastroController.usuarioForm.email}">
+							<f:ajax id="emailValidator" render="messages" />
+						</h:inputText>
+					</div>
+					
+					<div class="input-login-container" id="envelope">
+						<i class="fa fa-id-card icon"></i>
+						<h:inputText a:placeholder="Cpf"
+							value="#{cadastroController.usuarioForm.cpf}">
+						</h:inputText>
+					</div>
+					<div class="input-login-container" id="lock">
+						<i class="fa fa-lock icon"></i>
+						<h:inputSecret a:placeholder="Senha"
+							value="#{cadastroController.usuarioForm.senha}"></h:inputSecret>
+					</div>
+					<div class="buttons-container">
+						<h:commandButton value="Me cadastrar"
+							actionListener="#{cadastroController.cadastrar()}">
+							<f:ajax render="@this messages" execute="@form"/>
+						</h:commandButton>
+					</div>
+				</h:form>
+				<h:form class="form-s-conta"><h:commandLink value="Tenho conta" actionListener='#{cadastroController.redirecionar("/pages/login.xhtml")}' ><f:ajax render="@this" /></h:commandLink></h:form>
+			</div>
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+
+</html>

@@ -1,0 +1,145 @@
+services:
+  postgres-master:
+    image: postgres:15
+    container_name: postgres-master
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: appdb
+    volumes:
+      - pg_master_data:/var/lib/postgresql/data
+      - ./scripts/master:/docker-entrypoint-initdb.d
+      - ./scripts/master/conf/postgresql.conf:/etc/postgresql/postgresql.conf
+      - ./scripts/master/conf/pg_hba.conf:/etc/postgresql/pg_hba.conf
+    command: -c config_file=/etc/postgresql/postgresql.conf
+    ports:
+      - "5432:5432"
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 3s
+      timeout: 5s
+      retries: 5
+
+  postgres-slave-1:
+    image: postgres:15
+    container_name: postgres-slave-1
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - pg_slave1_data:/var/lib/postgresql/data
+      - ./scripts/slave:/scripts
+    depends_on:
+      postgres-master:
+        condition: service_healthy
+    entrypoint: ["/scripts/replica-entrypoint.sh"]
+    networks:
+      - backend
+
+
+  postgres-slave-2:
+    image: postgres:15
+    container_name: postgres-slave-2
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - pg_slave2_data:/var/lib/postgresql/data
+      - ./scripts/slave:/scripts
+    depends_on:
+      postgres-master:
+        condition: service_healthy
+    entrypoint: ["/scripts/replica-entrypoint.sh"]
+    networks:
+      - backend
+
+  traefik:
+    image: traefik:v2.11
+    container_name: traefik
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--log.level=DEBUG"
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - backend
+  postgres-exporter:
+    image: prometheuscommunity/postgres-exporter
+    container_name: postgres-exporter
+    environment:
+      DATA_SOURCE_NAME: "postgresql://postgres:postgres@postgres-master:5432/appdb?sslmode=disable"
+    ports:
+      - "9187:9187"
+    networks:
+      - backend
+    depends_on:
+      postgres-master:
+        condition: service_healthy
+  app:
+    build: 
+      context: ./SistemaCalculoDividas
+      dockerfile: Dockerfile
+    deploy:
+      mode: replicated
+      replicas: 6
+    networks:
+      - backend
+    env_file: ".env"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.adonis.rule=Host(`localhost`)"
+      - "traefik.http.routers.adonis.entrypoints=web"
+      - "traefik.http.services.adonis.loadbalancer.server.port=3333"
+      - "traefik.docker.network=net"
+      - "traefik.http.routers.adonis.middlewares=strip-slashed-url"
+      - "traefik.http.middlewares.strip-slashed-url.stripprefix.prefixes=/"
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    ports:
+      - 9090:9090
+    restart: unless-stopped
+    volumes:
+      - ./prometheus:/etc/prometheus
+      - prom_data:/prometheus
+    networks:
+      - backend
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - 3000:3000
+    restart: unless-stopped
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=grafana
+    volumes:
+      - ./grafana:/etc/grafana/provisioning/datasources
+      - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+      - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+    networks:
+      - backend
+
+volumes:
+  pg_master_data:
+  pg_slave1_data:
+  pg_slave2_data:
+  pgdata:
+  prom_data:
+
+networks:
+  backend:
+    driver: bridge
